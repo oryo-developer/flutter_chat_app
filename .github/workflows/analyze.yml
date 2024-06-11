@@ -12,6 +12,7 @@ jobs:
           flutter-version: ${{ steps.flutter-fvm-config-action.outputs.FLUTTER_VERSION }}
           cache: true
       - run: flutter pub get
+      - run: curl -sL https://firebase.tools | bash
       - run: dart pub global activate flutterfire_cli
       - run: flutterfire reconfigure
       - run: flutter analyze
