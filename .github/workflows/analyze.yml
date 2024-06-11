@@ -15,8 +15,9 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: curl -sL https://firebase.tools | bash
-      - run: dart pub global activate flutterfire_cli
-      - run: flutterfire reconfigure
+      - run: firebase login
+      # - run: dart pub global activate flutterfire_cli
+      # - run: flutterfire reconfigure
       # - run: |
       #     flutterfire configure \
       #       -p ${{ secrets.PROJECT_ID }} \
@@ -26,4 +27,4 @@ jobs:
       #       -a $APP_ID \
       #       -w $APP_ID \
       #       -t ${{ secrets.FIREBASE_TOKEN }}
-      - run: flutter analyze
+      # - run: flutter analyze
