@@ -16,11 +16,12 @@ jobs:
       - run: flutter pub get
       - run: curl -sL https://firebase.tools | bash
       - run: dart pub global activate flutterfire_cli
-      - run: flutterfire configure \
-               -p ${{ secrets.PROJECT_ID }} \
-               -y --platforms=android,ios \
-               -i $APP_ID \
-               -m $APP_ID \
-               -a $APP_ID \
-               -t ${{ secrets.FIREBASE_TOKEN }}
+      - run: |
+          flutterfire configure \
+            -p ${{ secrets.PROJECT_ID }} \
+            -y --platforms=android,ios \
+            -i $APP_ID \
+            -m $APP_ID \
+            -a $APP_ID \
+            -t ${{ secrets.FIREBASE_TOKEN }}
       - run: flutter analyze
