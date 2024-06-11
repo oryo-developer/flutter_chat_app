@@ -14,17 +14,12 @@ jobs:
           flutter-version: ${{ steps.flutter-fvm-config-action.outputs.FLUTTER_VERSION }}
           cache: true
       - run: flutter pub get
-      - run: curl -sL https://firebase.tools | bash
-      - run: firebase login
-      # - run: dart pub global activate flutterfire_cli
-      # - run: flutterfire reconfigure
-      # - run: |
-      #     flutterfire configure \
-      #       -p ${{ secrets.PROJECT_ID }} \
-      #       -y --platforms=android,ios \
-      #       -i $APP_ID \
-      #       -m $APP_ID \
-      #       -a $APP_ID \
-      #       -w $APP_ID \
-      #       -t ${{ secrets.FIREBASE_TOKEN }}
-      # - run: flutter analyze
+      - run: |
+          echo ${{ secrets.GOOGLE_SERVICES_JSON }} > android/app/src/google-services.json
+          echo ${{ secrets.GOOGLE_SERVICE_INFO_PLIT }} > ios/Runner/GoogleService-Info.plist
+          echo ${{ secrets.FIREBASE_OPTIONS_DART }} > lib/firebase_options.dart
+      - run: |
+          cat android/app/src/google-services.json
+          cat ios/Runner/GoogleService-Info.plist
+          cat lib/firebase_options.dart
+      - run: flutter analyze
