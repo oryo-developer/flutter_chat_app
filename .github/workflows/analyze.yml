@@ -23,5 +23,7 @@ jobs:
             -i $APP_ID \
             -m $APP_ID \
             -a $APP_ID \
+            -w $APP_ID \
+            # -x $APP_ID \
             -t ${{ secrets.FIREBASE_TOKEN }}
       - run: flutter analyze
